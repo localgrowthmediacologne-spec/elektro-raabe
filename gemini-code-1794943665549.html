@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Schutz vor Suchmaschinen-Indexierung (Demo-Version) -->
+    <meta name="robots" content="noindex, nofollow">
+    <title>Design-Entwurf · Elektro-Installation Raabe GmbH Köln</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+
+        .page-view {
+            animation: fadeIn 0.25s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Starkes Blau/Gelb-Raster im Hero für optimalen Kontrast */
+        .hero-pattern {
+            background-color: #1e1b4b;
+            background-image: radial-gradient(rgba(234, 179, 8, 0.22) 1px, transparent 1px);
+            background-size: 26px 26px;
+        }
+
+        /* Laufband für Leistungsschwerpunkte */
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: flex;
+            width: max-content;
+            animation: marquee 28s linear infinite;
+        }
+        .animate-marquee:hover {
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+<body class="bg-zinc-50 text-zinc-800 antialiased selection:bg-amber-400 selection:text-zinc-950 flex flex-col min-h-screen">
+
+    <!-- 1. Gut sichtbarer Demo-Hinweis-Balken ganz oben -->
+    <div class="bg-amber-400 text-zinc-950 text-xs md:text-sm font-extrabold py-2.5 px-4 text-center border-b border-amber-500 shadow-xs z-50">
+        🎨 UNVERBINDLICHER DESIGN-ENTWURF · Demoseite erstellt von Local Growth Media (Keine aktive Unternehmenswebsite)
+    </div>
+
+    <!-- 2. Top-Kontaktleiste -->
+    <div class="bg-zinc-950 text-zinc-200 text-xs font-medium py-2 px-4 border-b border-white/10">
+        <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-2">
+            <span class="text-zinc-300">⚡ Familiengeführter Fachbetrieb seit 1968 · Köln &amp; Umgebung</span>
+            <div class="flex items-center gap-4">
+                <a href="tel:+49221594443" class="text-amber-400 hover:text-amber-300 font-bold flex items-center gap-1.5">
+                    <span>📞 0221 / 594443</span>
+                </a>
+                <span class="hidden md:inline text-zinc-400">🕒 Mo–Fr: 08:30–17:00 Uhr</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Hauptnavigation (Blau + Gelb) -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-zinc-200/90 shadow-2xs">
+        <div class="max-w-6xl mx-auto px-4 py-3.5 flex items-center justify-between gap-4">
+            <button type="button" onclick="navigateTo('home')" class="flex items-center gap-3 text-left group cursor-pointer">
+                <div class="relative w-11 h-11 rounded-xl bg-indigo-950 border-2 border-amber-400 text-amber-400 flex items-center justify-center font-extrabold text-base tracking-tight shadow-sm group-hover:scale-[1.02] transition shrink-0">
+                    <span>ER</span>
+                    <span class="absolute -top-1.5 -right-1.5 w-4 h-4 rounded-full bg-amber-400 text-zinc-950 text-[10px] font-black flex items-center justify-center shadow-2xs">⚡</span>
+                </div>
+                <div>
+                    <span class="text-sm md:text-base font-extrabold text-zinc-900 block leading-tight tracking-tight">
+                        ELEKTRO RAABE <span class="text-indigo-900">GmbH</span>
+                    </span>
+                    <span class="text-[11px] font-semibold text-zinc-500 block">
+                        Ihr Elektriker in Köln seit 1968
+                    </span>
+                </div>
+            </button>
+
+            <nav class="hidden lg:flex items-center gap-1 bg-zinc-100 p-1 rounded-xl border border-zinc-200/80">
+                <button type="button" onclick="navigateTo('home')" data-nav="home" class="nav-btn px-4 py-2 rounded-lg text-sm font-bold transition bg-indigo-900 text-white shadow-2xs cursor-pointer">Startseite</button>
+                <button type="button" onclick="navigateTo('leistungen')" data-nav="leistungen" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium text-zinc-700 hover:text-zinc-950 transition cursor-pointer">Leistungen</button>
+                <button type="button" onclick="navigateTo('ueber-uns')" data-nav="ueber-uns" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium text-zinc-700 hover:text-zinc-950 transition cursor-pointer">Über uns &amp; Team</button>
+                <button type="button" onclick="navigateTo('kontakt')" data-nav="kontakt" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium text-zinc-700 hover:text-zinc-950 transition cursor-pointer">Kontakt</button>
+            </nav>
+
+            <a href="tel:+49221594443" class="bg-indigo-900 hover:bg-indigo-950 text-white font-bold text-xs md:text-sm px-4 py-2.5 rounded-xl transition shadow-xs flex items-center gap-1.5">
+                <span>📞</span>
+                <span>0221 / 594443</span>
+            </a>
+        </div>
+
+        <div class="lg:hidden border-t border-zinc-200 bg-zinc-50 px-2 py-1.5 flex justify-around text-xs font-semibold overflow-x-auto">
+            <button type="button" onclick="navigateTo('home')" data-nav-mob="home" class="mob-nav-btn px-3 py-1.5 rounded-lg text-white bg-indigo-900 shadow-2xs">Start</button>
+            <button type="button" onclick="navigateTo('leistungen')" data-nav-mob="leistungen" class="mob-nav-btn px-3 py-1.5 rounded-lg text-zinc-600">Leistungen</button>
+            <button type="button" onclick="navigateTo('ueber-uns')" data-nav-mob="ueber-uns" class="mob-nav-btn px-3 py-1.5 rounded-lg text-zinc-600">Über uns</button>
+            <button type="button" onclick="navigateTo('kontakt')" data-nav-mob="kontakt" class="mob-nav-btn px-3 py-1.5 rounded-lg text-zinc-600">Kontakt</button>
+        </div>
+    </header>
+
+    <!-- HAUPTINHALT -->
+    <main class="flex-1">
+
+        <!-- UNTERSEITE 1: STARTSEITE -->
+        <div id="view-home" class="page-view">
+
+            <!-- HERO SECTION -->
+            <section class="relative hero-pattern text-white pt-12 pb-16 md:pt-16 md:pb-20 px-4 overflow-hidden border-b border-indigo-950">
+                <div class="max-w-6xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+
+                    <!-- Linke Spalte -->
+                    <div class="lg:col-span-6 pt-2">
+                        <div class="inline-flex items-center gap-2.5 bg-indigo-900/90 backdrop-blur-md border border-indigo-700 rounded-full px-4 py-1.5 text-xs font-semibold mb-5 shadow-sm">
+                            <span class="text-amber-400 text-sm">⚡</span>
+                            <span class="text-white font-bold">Innungs-Premium-E-Marken-Betrieb</span>
+                            <span class="text-indigo-200">· Seit 1968</span>
+                        </div>
+
+                        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.12] mb-5 text-white">
+                            Gehen Sie nicht zu irgendeinem Vogel, sondern gleich zu <span class="text-amber-400">Raabe</span>.
+                        </h1>
+
+                        <p class="text-indigo-100 text-base md:text-lg leading-relaxed mb-7 font-normal">
+                            Ihr erfahrener Elektriker in Köln und Umgebung[cite: 9]. Wir beraten Sie bei der Planung von gebäudetechnischen Anlagen und kümmern uns um Errichtung und Instandhaltung.
+                        </p>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-7 text-sm">
+                            <div class="flex items-center gap-2.5 bg-indigo-950/80 border border-indigo-900 rounded-xl px-3.5 py-2.5">
+                                <span class="text-amber-400 font-bold">✓</span>
+                                <span class="text-zinc-200 font-medium">Gebäudetechnik &amp; Planung</span>
+                            </div>
+                            <div class="flex items-center gap-2.5 bg-indigo-950/80 border border-indigo-900 rounded-xl px-3.5 py-2.5">
+                                <span class="text-amber-400 font-bold">✓</span>
+                                <span class="text-zinc-200 font-medium">Sanierung &amp; Instandhaltung</span>
+                            </div>
+                            <div class="flex items-center gap-2.5 bg-indigo-950/80 border border-indigo-900 rounded-xl px-3.5 py-2.5">
+                                <span class="text-amber-400 font-bold">✓</span>
+                                <span class="text-zinc-200 font-medium">Regelmäßig geschultes Team</span>
+                            </div>
+                            <div class="flex items-center gap-2.5 bg-indigo-950/80 border border-indigo-900 rounded-xl px-3.5 py-2.5">
+                                <span class="text-amber-400 font-bold">✓</span>
+                                <span class="text-zinc-200 font-medium">Persönliche Vor-Ort-Beratung</span>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap items-center gap-3">
+                            <a href="tel:+49221594443" class="bg-amber-400 text-zinc-950 hover:bg-amber-300 font-extrabold px-5 py-3.5 rounded-xl text-sm transition shadow-md inline-flex items-center gap-2">
+                                <span>📞 Hotline: 0221 / 594443</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Rechte Spalte: Rechner & Formular -->
+                    <div class="lg:col-span-6">
+                        <div class="bg-white text-zinc-900 rounded-3xl p-5 sm:p-7 shadow-2xl border border-zinc-200/80">
+                            <div class="flex items-center justify-between gap-2 pb-4 mb-4 border-b border-zinc-100">
+                                <div>
+                                    <span class="inline-flex items-center gap-1.5 text-[11px] font-extrabold uppercase tracking-wider text-indigo-900">
+                                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                                        Projekt-Anfrage &amp; Rechner
+                                    </span>
+                                    <h2 class="text-lg sm:text-xl font-extrabold text-zinc-900 mt-0.5">
+                                        Unverbindlichen Richtpreis &amp; Termin anfragen
+                                    </h2>
+                                </div>
+                            </div>
+
+                            <form id="heroDirectForm" class="space-y-4">
+                                <input type="hidden" name="access_key" value="DEIN_WEB3FORMS_KEY">
+                                <input type="hidden" name="subject" value="Neue Projekt-Anfrage - Elektro Raabe GmbH">
+                                <input type="hidden" id="heroCalcSummary" name="kalkulation">
+
+                                <div>
+                                    <label class="block text-xs font-bold text-zinc-700 mb-1.5">Welches Vorhaben planen Sie?</label>
+                                    <div class="grid grid-cols-3 gap-2">
+                                        <button type="button" onclick="setHeroService('Gebäudetechnik & Elektroinstallation', 90, this)" class="hero-srv-btn border-2 border-indigo-900 bg-indigo-50 text-indigo-950 rounded-xl py-2 px-2 text-center transition cursor-pointer">
+                                            <span class="block text-xs font-extrabold">⚡ Gebäudetechnik</span>
+                                        </button>
+                                        <button type="button" onclick="setHeroService('Sanierung & Zähleranlage', 110, this)" class="hero-srv-btn border border-zinc-200 bg-zinc-50 text-zinc-700 hover:border-indigo-400 rounded-xl py-2 px-2 text-center transition cursor-pointer">
+                                            <span class="block text-xs font-extrabold">🔌 Sanierung</span>
+                                        </button>
+                                        <button type="button" onclick="setHeroService('Wartung & Kundendienst', 85, this)" class="hero-srv-btn border border-zinc-200 bg-zinc-50 text-zinc-700 hover:border-indigo-400 rounded-xl py-2 px-2 text-center transition cursor-pointer">
+                                            <span class="block text-xs font-extrabold">🛠️ Kundendienst</span>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="bg-zinc-50 border border-zinc-200/90 rounded-2xl p-3.5">
+                                    <div class="flex items-center justify-between text-xs mb-1.5">
+                                        <span class="font-bold text-zinc-700">Umfang: <strong id="heroScopeVal" class="text-indigo-900">4 Anschlüsse / Punkte</strong></span>
+                                        <span class="font-extrabold text-zinc-900 bg-white border border-zinc-200 px-2.5 py-0.5 rounded-lg">
+                                            Richtwert: <span id="heroLivePrice" class="text-indigo-900">ca. 360 €</span>
+                                        </span>
+                                    </div>
+                                    <input type="range" id="heroScopeSlider" min="1" max="25" step="1" value="4" oninput="updateHeroEstimate()" class="w-full accent-indigo-900 cursor-pointer">
+                                    <div class="flex justify-between text-[10px] text-zinc-400 mt-0.5">
+                                        <span>1 Punkt</span>
+                                        <span>12 Punkte</span>
+                                        <span>25+ (Sanierung)</span>
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                    <div>
+                                        <label class="block text-xs font-bold text-zinc-700 mb-1">Ihr Name *</label>
+                                        <input type="text" name="name" required placeholder="Max Mustermann" class="w-full bg-zinc-50 border border-zinc-300 rounded-xl px-3.5 py-2.5 text-sm text-zinc-900 focus:outline-none focus:border-indigo-900 focus:bg-white">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-bold text-zinc-700 mb-1">Telefon oder E-Mail *</label>
+                                        <input type="text" name="contact" required placeholder="0221... oder E-Mail" class="w-full bg-zinc-50 border border-zinc-300 rounded-xl px-3.5 py-2.5 text-sm text-zinc-900 focus:outline-none focus:border-indigo-900 focus:bg-white">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label class="block text-xs font-bold text-zinc-700 mb-1">Kölner Stadtteil / Kurzbeschreibung (optional)</label>
+                                    <input type="text" name="details" placeholder="z.B. Ehrenfeld, Steckdosen erneuern oder Zählerschrank" class="w-full bg-zinc-50 border border-zinc-300 rounded-xl px-3.5 py-2.5 text-sm text-zinc-900 focus:outline-none focus:border-indigo-900 focus:bg-white">
+                                </div>
+
+                                <button type="submit" id="heroSubmitBtn" class="w-full bg-indigo-900 hover:bg-indigo-950 text-white font-extrabold py-3.5 rounded-xl text-sm transition shadow-md cursor-pointer">
+                                    Kostenlose Beratung anfragen →
+                                </button>
+
+                                <p class="text-[11px] text-zinc-400 text-center">
+                                    Familiengeführter Meisterbetrieb · Inhaber Jürgen &amp; Michael Brabender
+                                </p>
+                            </form>
+
+                            <div id="heroSuccessBox" class="hidden bg-emerald-50 border border-emerald-300 text-emerald-900 p-4 rounded-2xl text-sm text-center space-y-2">
+                                <div class="font-extrabold">✅ Anfrage erfolgreich übermittelt!</div>
+                                <p class="text-xs">Vielen Dank! Das Team von Elektro Raabe meldet sich zeitnah bei Ihnen.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Laufendes Keyword-Band -->
+            <div class="bg-indigo-900 text-white py-3 overflow-hidden border-y border-indigo-950 font-extrabold">
+                <div class="animate-marquee text-xs uppercase tracking-widest flex items-center gap-8">
+                    <span>ELEKTROINSTALLATION SEIT 1968</span><span>⚡</span>
+                    <span>GEBÄUDETECHNIK &amp; PLANUNG</span><span>⚡</span>
+                    <span>SANIERUNG &amp; INSTANDHALTUNG</span><span>⚡</span>
+                    <span>KUNDENDIENST &amp; WARTUNG</span><span>⚡</span>
+                    <span>INHUNGS-PREMIUM-E-MARKEN-BETRIEB</span><span>⚡</span>
+                    <span>KÖLN &amp; UMGEBUNG</span><span>⚡</span>
+                    <!-- Loop -->
+                    <span>ELEKTROINSTALLATION SEIT 1968</span><span>⚡</span>
+                    <span>GEBÄUDETECHNIK &amp; PLANUNG</span><span>⚡</span>
+                    <span>SANIERUNG &amp; INSTANDHALTUNG</span><span>⚡</span>
+                    <span>KUNDENDIENST &amp; WARTUNG</span><span>⚡</span>
+                    <span>INHUNGS-PREMIUM-E-MARKEN-BETRIEB</span><span>⚡</span>
+                    <span>KÖLN &amp; UMGEBUNG</span><span>⚡</span>
+                </div>
+            </div>
+
+            <!-- Service-Leiste -->
+            <section class="py-8 px-4 bg-white border-b border-zinc-200">
+                <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+                    <span class="text-xs font-extrabold uppercase tracking-wider text-zinc-500">Ihr Elektriker in Köln[cite: 9]</span>
+                    <div class="flex flex-wrap justify-center gap-3 text-xs font-bold text-zinc-800">
+                        <span class="bg-zinc-100 border border-zinc-200 px-3.5 py-2 rounded-xl">🏛️ Handwerkskammer Köln &amp; Innung</span>
+                        <span class="bg-zinc-100 border border-zinc-200 px-3.5 py-2 rounded-xl">👨‍👩‍👦 Inhaber: Jürgen &amp; Michael Brabender[cite: 9]</span>
+                        <span class="bg-zinc-100 border border-zinc-200 px-3.5 py-2 rounded-xl">⚡ Seit über 55 Jahren aktiv</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ANIMIERTE ERFOLGSZÄHLER -->
+            <section id="countersSection" class="py-14 px-4 bg-zinc-900 text-white border-b border-zinc-800">
+                <div class="max-w-5xl mx-auto">
+                    <div class="text-center max-w-2xl mx-auto mb-10">
+                        <span class="text-amber-400 text-xs font-extrabold uppercase tracking-widest">Tradition &amp; Moderne</span>
+                        <h2 class="text-2xl md:text-4xl font-extrabold mt-1">Zahlen, auf die Sie bauen können.</h2>
+                        <p class="text-zinc-400 text-sm mt-2">Kompetenter Service aus erster Hand durch qualifiziertes Fachpersonal[cite: 9].</p>
+                    </div>
+
+                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+                        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 text-center">
+                            <div class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-amber-400 counter-num" data-target="58" data-suffix="+">0+</div>
+                            <div class="text-xs sm:text-sm font-semibold text-zinc-200 mt-2">Jahre Erfahrung (seit 1968)[cite: 9]</div>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 text-center">
+                            <div class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-indigo-400 counter-num" data-target="2000" data-suffix="+">0+</div>
+                            <div class="text-xs sm:text-sm font-semibold text-zinc-200 mt-2">Realisierte Projekte</div>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 text-center">
+                            <div class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-amber-400 counter-num" data-target="100" data-suffix="%">0%</div>
+                            <div class="text-xs sm:text-sm font-semibold text-zinc-200 mt-2">Innungs-Qualität</div>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 text-center">
+                            <div class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-indigo-400 counter-num" data-target="24" data-suffix="h">0h</div>
+                            <div class="text-xs sm:text-sm font-semibold text-zinc-200 mt-2">Schneller Service</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Leistungen Übersicht -->
+            <section class="py-16 px-4 bg-white border-b border-zinc-200">
+                <div class="max-w-6xl mx-auto">
+                    <div class="text-center max-w-2xl mx-auto mb-12">
+                        <span class="text-indigo-900 text-xs font-extrabold uppercase tracking-wider">Unser Leistungsspektrum</span>
+                        <h2 class="text-3xl md:text-4xl font-extrabold text-zinc-900 mt-1">Elektrotechnik aus Meisterhand</h2>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="bg-zinc-50 border border-zinc-200 rounded-2xl p-6 flex flex-col justify-between">
+                            <div>
+                                <div class="w-11 h-11 rounded-xl bg-indigo-900 text-amber-400 flex items-center justify-center text-lg mb-4 font-bold">⚡</div>
+                                <h3 class="font-extrabold text-zinc-900 text-base mb-2">Gebäudetechnik</h3>
+                                <ul class="text-xs text-zinc-600 space-y-1.5 mb-4">
+                                    <li>• Umfassende Planung</li>
+                                    <li>• Errichtung &amp; Installation</li>
+                                    <li>• Modernste Standards</li>
+                                </ul>
+                            </div>
+                            <a href="#heroDirectForm" onclick="presetHeroAndScroll('Gebäudetechnik & Elektroinstallation', 90)" class="text-xs font-extrabold text-indigo-900 hover:underline">Direkt anfragen ↑</a>
+                        </div>
+                        <div class="bg-zinc-50 border border-zinc-200 rounded-2xl p-6 flex flex-col justify-between">
+                            <div>
+                                <div class="w-11 h-11 rounded-xl bg-amber-400 text-zinc-950 flex items-center justify-center text-lg mb-4 font-bold">🔧</div>
+                                <h3 class="font-extrabold text-zinc-900 text-base mb-2">Instandhaltung</h3>
+                                <ul class="text-xs text-zinc-600 space-y-1.5 mb-4">
+                                    <li>• Regelmäßige Wartung</li>
+                                    <li>• Fehlerbehebung &amp; Reparatur</li>
+                                    <li>• Zuverlässiger Service</li>
+                                </ul>
+                            </div>
+                            <a href="#heroDirectForm" onclick="presetHeroAndScroll('Wartung & Kundendienst', 85)" class="text-xs font-extrabold text-indigo-900 hover:underline">Direkt anfragen ↑</a>
+                        </div>
+                        <div class="bg-zinc-50 border border-zinc-200 rounded-2xl p-6 flex flex-col justify-between">
+                            <div>
+                                <div class="w-11 h-11 rounded-xl bg-indigo-900 text-amber-400 flex items-center justify-center text-lg mb-4 font-bold">💡</div>
+                                <h3 class="font-extrabold text-zinc-900 text-base mb-2">Sanierung</h3>
+                                <ul class="text-xs text-zinc-600 space-y-1.5 mb-4">
+                                    <li>• Altbausanierung</li>
+                                    <li>• Zähler- &amp; Verteileranlagen</li>
+                                    <li>• VDE-Normgerecht</li>
+                                </ul>
+                            </div>
+                            <a href="#heroDirectForm" onclick="presetHeroAndScroll('Sanierung & Zähleranlage', 110)" class="text-xs font-extrabold text-indigo-900 hover:underline">Direkt anfragen ↑</a>
+                        </div>
+                        <div class="bg-zinc-50 border border-zinc-200 rounded-2xl p-6 flex flex-col justify-between">
+                            <div>
+                                <div class="w-11 h-11 rounded-xl bg-amber-400 text-zinc-950 flex items-center justify-center text-lg mb-4 font-bold">📋</div>
+                                <h3 class="font-extrabold text-zinc-900 text-base mb-2">Beratung</h3>
+                                <ul class="text-xs text-zinc-600 space-y-1.5 mb-4">
+                                    <li>• Individuelle Konzepte</li>
+                                    <li>• Normen &amp; Vorschriften</li>
+                                    <li>• Vor-Ort-Termine</li>
+                                </ul>
+                            </div>
+                            <a href="#heroDirectForm" onclick="presetHeroAndScroll('Gebäudetechnik & Elektroinstallation', 90)" class="text-xs font-extrabold text-indigo-900 hover:underline">Direkt anfragen ↑</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- PLATZHALTER UNTERSEITEN 2-4 -->
+        <div id="view-leistungen" class="page-view hidden">
+            <section class="py-14 px-4 bg-indigo-950 text-white border-b border-indigo-900">
+                <div class="max-w-5xl mx-auto">
+                    <span class="text-amber-400 text-xs font-extrabold uppercase tracking-widest">Leistungen</span>
+                    <h1 class="text-3xl md:text-5xl font-extrabold mt-1 mb-4">Elektroinstallation &amp; Service</h1>
+                </div>
+            </section>
+        </div>
+
+        <div id="view-ueber-uns" class="page-view hidden">
+            <section class="py-14 px-4 bg-indigo-950 text-white border-b border-indigo-900">
+                <div class="max-w-5xl mx-auto">
+                    <span class="text-amber-400 text-xs font-extrabold uppercase tracking-widest">Über uns</span>
+                    <h1 class="text-3xl md:text-5xl font-extrabold mt-1 mb-4">Familienbetrieb Raabe seit 1968</h1>
+                </div>
+            </section>
+        </div>
+
+        <div id="view-kontakt" class="page-view hidden">
+            <section class="py-14 px-4 bg-indigo-950 text-white border-b border-indigo-900">
+                <div class="max-w-5xl mx-auto">
+                    <span class="text-amber-400 text-xs font-extrabold uppercase tracking-widest">Kontakt</span>
+                    <h1 class="text-3xl md:text-5xl font-extrabold mt-1 mb-4">Kontakt &amp; Öffnungszeiten</h1>
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-12 px-4 bg-zinc-950 text-zinc-300 text-sm border-t border-zinc-800">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+            <div>
+                <div class="text-lg font-extrabold text-white">Elektro-Installation Raabe GmbH</div>
+                <div class="text-xs text-zinc-400 mt-1">Rochusstraße 375, 50827 Köln · Tel. 0221 / 594443</div>
+            </div>
+            <div class="flex flex-wrap gap-4 text-xs font-semibold">
+                <button type="button" onclick="navigateTo('home')" class="hover:text-white transition cursor-pointer">Startseite</button>
+                <button type="button" onclick="navigateTo('leistungen')" class="hover:text-white transition cursor-pointer">Leistungen</button>
+                <button type="button" onclick="navigateTo('ueber-uns')" class="hover:text-white transition cursor-pointer">Über uns</button>
+                <button type="button" onclick="navigateTo('kontakt')" class="hover:text-white transition cursor-pointer">Kontakt &amp; Impressum</button>
+            </div>
+        </div>
+        <div class="max-w-6xl mx-auto mt-8 pt-6 border-t border-zinc-800 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-zinc-500">
+            <span>Unverbindlicher Design-Entwurf erstellt von <strong>Local Growth Media</strong> · Köln</span>
+            <span>Demoseite – nicht öffentlich indexiert</span>
+        </div>
+    </footer>
+
+    <script>
+        function navigateTo(pageId) {
+            document.querySelectorAll('.page-view').forEach(el => el.classList.add('hidden'));
+            const target = document.getElementById('view-' + pageId);
+            if (target) target.classList.remove('hidden');
+
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                if (btn.dataset.nav === pageId) {
+                    btn.classList.add('bg-indigo-900', 'text-white', 'shadow-2xs', 'font-bold');
+                    btn.classList.remove('text-zinc-700', 'font-medium');
+                } else {
+                    btn.classList.remove('bg-indigo-900', 'text-white', 'shadow-2xs', 'font-bold');
+                    btn.classList.add('text-zinc-700', 'font-medium');
+                }
+            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        let heroState = { service: 'Gebäudetechnik & Elektroinstallation', rate: 90 };
+
+        function setHeroService(name, rate, btn) {
+            heroState.service = name;
+            heroState.rate = rate;
+            document.querySelectorAll('.hero-srv-btn').forEach(b => {
+                b.className = 'hero-srv-btn border border-zinc-200 bg-zinc-50 text-zinc-700 hover:border-indigo-400 rounded-xl py-2 px-2 text-center transition cursor-pointer';
+            });
+            btn.className = 'hero-srv-btn border-2 border-indigo-900 bg-indigo-50 text-indigo-950 rounded-xl py-2 px-2 text-center transition cursor-pointer';
+            updateHeroEstimate();
+        }
+
+        function presetHeroAndScroll(name, rate) {
+            heroState.service = name;
+            heroState.rate = rate;
+            updateHeroEstimate();
+        }
+
+        function updateHeroEstimate() {
+            const count = parseInt(document.getElementById('heroScopeSlider').value, 10);
+            const label = count === 1 ? '1 Anschlusspunkt' : `${count} Anschlusspunkte`;
+            document.getElementById('heroScopeVal').innerText = label;
+            const estimate = Math.max(85, Math.round((count * heroState.rate) / 5) * 5);
+            document.getElementById('heroLivePrice').innerText = 'ca. ' + estimate + ' €';
+            document.getElementById('heroCalcSummary').value = `${heroState.service} | ${label} | Richtwert: ca. ${estimate} €`;
+        }
+        updateHeroEstimate();
+
+        document.getElementById('heroDirectForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('heroSubmitBtn');
+            btn.innerText = 'Wird gesendet...';
+            btn.disabled = true;
+            try {
+                await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify(Object.fromEntries(new FormData(this)))
+                });
+            } catch (err) {}
+            this.classList.add('hidden');
+            document.getElementById('heroSuccessBox').classList.remove('hidden');
+        });
+
+        let countersAnimated = false;
+        function animateCounters() {
+            if (countersAnimated) return;
+            countersAnimated = true;
+            document.querySelectorAll('.counter-num').forEach(el => {
+                const target = parseInt(el.dataset.target, 10);
+                const suffix = el.dataset.suffix || '';
+                const duration = 1600;
+                const startTime = performance.now();
+                function tick(now) {
+                    const elapsed = now - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const eased = 1 - Math.pow(1 - progress, 3);
+                    el.innerText = Math.round(eased * target) + suffix;
+                    if (progress < 1) requestAnimationFrame(tick);
+                    else el.innerText = target + suffix;
+                }
+                requestAnimationFrame(tick);
+            });
+        }
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) animateCounters(); });
+        }, { threshold: 0.25 });
+        const counterSec = document.getElementById('countersSection');
+        if (counterSec) counterObserver.observe(counterSec);
+        setTimeout(animateCounters, 2500);
+    </script>
+</body>
+</html>
